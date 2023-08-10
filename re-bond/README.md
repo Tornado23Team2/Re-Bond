@@ -27,4 +27,4 @@ npm run dev
 ## ブランチ名の命名規則
 
 ブランチ名は、以下の命名規則に従うこと。
-### feature名/name/#issue
+### featureName/yourName/#issueNum
