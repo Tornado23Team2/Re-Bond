@@ -1,3 +1,4 @@
+import Header from '@/components/layouts/header/Header'
 import './globals.css'
 import { Inter } from 'next/font/google'
 
@@ -20,7 +21,10 @@ export default function RootLayout({
         <link rel="manifest" href="/manifest.json" />
         <link rel="apple-touch-icon" href="/icon-192x192.png" />
       </head>
-      <body className={inter.className}>{children}</body>
+      <body className={inter.className}>
+        <Header />
+        {children}
+      </body>
     </html>
   )
 }

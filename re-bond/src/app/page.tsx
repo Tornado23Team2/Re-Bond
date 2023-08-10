@@ -1,10 +1,13 @@
+import { Flex } from "@/components/elements/box/Flex"
 
 export default function Home() {
   return (
     <main>
-      <h1 className="text-3xl font-bold underline">
+      <Flex
+        justify="center"
+        className="w-full h-full items-center text-3xl font-bold underline">
         Hello world!
-      </h1>
+      </Flex>
     </main>
   )
 }
