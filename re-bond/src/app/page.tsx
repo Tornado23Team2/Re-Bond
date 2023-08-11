@@ -1,3 +1,4 @@
+import React from 'react'
 import { Flex } from "@/components/elements/box/Flex"
 
 export default function Home() {
