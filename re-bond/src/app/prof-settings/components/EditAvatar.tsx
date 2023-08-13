@@ -39,7 +39,7 @@ const EditAvatar = () => {
             className='hidden'
             onChange={handleUpload}
             />
-            <label htmlFor="avatar">
+            <label htmlFor='avatar'>
               Upload Image
             </label>
         </Flex>
