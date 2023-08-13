@@ -3,7 +3,6 @@ import React from "react"
 type Props = {
   children: React.ReactNode
   direction?: "row" | "column"
-  className?: string
   justify?:
     | "center"
     | "space-between"
@@ -15,29 +14,23 @@ type Props = {
     | "stretch"
   align?: "center" | "flex-start" | "flex-end" | "baseline" | "stretch"
   wrap?: "nowrap" | "wrap" | "wrap-reverse"
-};
 
+  // その他のCSS設定
+  className?: string
+}
 export const Flex = (props: Props) => {
-  const {
-    children,
-    className,
-    align,
-    direction,
-    justify,
-    wrap,
-  } = props
-
-  const classes = [
-    "flex",
-    align && `items-${align}`,
-    direction && `flex-${direction}`,
-    justify && `justify-${justify}`,
-    wrap && `flex-${wrap}`,
-    className,
-  ].filter(Boolean).join(" ")
-
+  const { children, align, direction, justify, wrap, className } = props
   return (
-    <div className={classes}>
+    <div
+      style={{
+        display: "flex",
+        alignItems: align,
+        flexDirection: direction,
+        justifyContent: justify,
+        flexWrap: wrap,
+      }}
+      className={className}
+    >
       {children}
     </div>
   )

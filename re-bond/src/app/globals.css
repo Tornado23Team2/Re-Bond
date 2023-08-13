@@ -10,3 +10,19 @@
     @apply pt-[91px] w-full h-screen
   }
 }
+
+@layer utilities {
+  h1 {
+    @apply text-2xl font-bold
+  }
+  h2 {
+    @apply text-xl
+  }
+  input {
+    @apply focus:outline-none focus:bg-inherit focus:inner-border-[1px]
+  }
+}
+
+@layer components {
+
+}
