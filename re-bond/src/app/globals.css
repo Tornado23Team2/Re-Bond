@@ -18,6 +18,9 @@
   h2 {
     @apply text-xl
   }
+  input {
+    @apply focus:outline-none focus:bg-inherit focus:inner-border-[1px]
+  }
 }
 
 @layer components {
