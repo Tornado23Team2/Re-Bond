@@ -3,6 +3,7 @@ import { Flex } from '@/components/elements/box/Flex'
 import EditAvatar from './components/EditAvatar'
 import EditName from './components/EditName'
 import EditProfile from './components/EditProfile'
+import { collection, addDoc } from "firebase/firestore"; 
 
 const page = () => {
   return (
