@@ -1,7 +1,10 @@
 import { Flex } from '@/components/elements/box/Flex'
 import React from 'react'
 import {collection, addDoc} from "firebase/firestore";
+import {collection, getDoc} from "firebase/firestore";
+import {db} from "../../firebase";
 //EditProfile.tsxにfirebaseを導入してみました。
+
 
 try{
     const docRef = await addDoc(collection(db , "users"),{
@@ -48,24 +51,27 @@ try{
 }
 
 
-const EditProfile = () => {
+function Firebase () {
+  const [userList, setUserList] = useState([]);
+
+  const userCollectionRef = collection(db,"users");
+  useEffect(() => {
+    const getUserList = async () => {
+    try{
+        const data = await getDoc(userCollectionRef);
+        console.log(data);
+    } catch (err){
+        console.error(err);
+    }
+  };
+  getUserList();
+}, []);
+  
   return (
-    <>
-      <Flex
-        align='center'
-        justify='center'
-      >
-        <label htmlFor='profile'>
-          <p>プロフィールLv{}</p>
-          <input
-            type='field'
-            id='profile'
-            placeholder={`プロフィールLv${1}`}
-          />
-        </label>
-      </Flex>
-    </>
-  )
+    <div className="Firebasedatain">
+        <Auth />
+    </div>
+  );
 }
 
-export default EditProfile
+export default Firebase
