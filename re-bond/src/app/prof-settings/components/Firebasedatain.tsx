@@ -2,7 +2,7 @@ import { Flex } from '@/components/elements/box/Flex'
 import React from 'react'
 import {collection, addDoc} from "firebase/firestore";
 import {collection, getDoc} from "firebase/firestore";
-import {db} from "../../firebase";
+import {db} from "../../firebase.mjs";
 //EditProfile.tsxにfirebaseを導入してみました。
 
 
