@@ -19,7 +19,7 @@
     @apply text-xl
   }
   input {
-    @apply focus:outline-none focus:bg-inherit focus:inner-border-[1px]
+    @apply focus:outline-none focus:bg-white focus:inner-border-[1px]
   }
 }
 

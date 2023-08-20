@@ -14,6 +14,7 @@ const EditProfile = () => {
             type='field'
             id='profile'
             placeholder={`プロフィールLv${1}`}
+            className='p-3 rounded-sm bg-gray-200'
           />
         </label>
       </Flex>

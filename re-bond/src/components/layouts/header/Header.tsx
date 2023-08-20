@@ -8,7 +8,7 @@ const Header = () => {
       <Flex
         justify='center'
         align='center'
-        className='fixed z-30 w-full h-[90px] bg-[#fff] border-b-2 border-indigo-600'
+        className='fixed z-30 w-full h-[90px] bg-[#fff] border-b-2 border-baseBlue'
       >
         <Image
           src={'/header/headerLogo.svg'}
