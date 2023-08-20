@@ -26,12 +26,18 @@ module.exports = {
       black: colors.black,
       white: colors.white,
       gray: colors.gray,
+      red: colors.red,
+      blue: colors.blue,
+      yellow: colors.yellow,
+      green: colors.green,
       'baseBlue':'#2859C5',
     },
     extend: {},
   },
   plugins: [
     require("tailwindcss-inner-border"),
+    require('tailwind-scrollbar-hide'),
+    require('tailwind-scrollbar'),
   ],
 }
 
