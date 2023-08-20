@@ -7,7 +7,7 @@
     @apply p-0 m-0
   }
   main {
-    @apply pt-[91px] w-full h-screen
+    @apply pt-[91px] mb-[70px] w-full
   }
 }
 
