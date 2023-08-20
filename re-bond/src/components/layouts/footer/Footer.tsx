@@ -20,7 +20,7 @@ const Footer = () => {
       name: 'QRコード',
       sub: 'QRcode',
       icon_path: '/qr.svg',
-      path: '/qr'
+      path: '/qr-code'
     },
     {
       name: 'フレンド',
