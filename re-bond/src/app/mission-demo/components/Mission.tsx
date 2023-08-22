@@ -113,9 +113,6 @@ const level5 = query(collectionRef,where('level','==',5));
         align='center'
         direction='column'
         className='w-full h-auto py-5'>
-        <h1 className='font-bold text-2xl'>
-          ミッションDEMO
-        </h1>
 
         {/* ミッション1 */}
         <button className='w-full p-4 border-b-2 border-gray-300'
