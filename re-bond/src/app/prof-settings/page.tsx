@@ -3,6 +3,7 @@ import { Flex } from '@/components/elements/box/Flex'
 import EditAvatar from './components/EditAvatar'
 import EditName from './components/EditName'
 import EditProfile from './components/EditProfile'
+import Footer from '@/components/layouts/footer/Footer'
 
 const page = () => {
   return (
