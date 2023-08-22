@@ -9,13 +9,10 @@ const page = () => {
       <main>
         <Flex
           direction='column'
-          className='w-full h-auto p-3'>
-          <h2>
-            ミッション一覧
-          </h2>
+          className='w-full h-auto'>
           
           {/* レベル別のタブ切り替え */}
-          <SelectLvTab />
+          <SelectLvTab levels={[1,2,3,4,5]} />
         </Flex>
       </main>
       <Footer />
