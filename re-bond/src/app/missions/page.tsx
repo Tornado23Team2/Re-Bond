@@ -9,10 +9,14 @@ import { getDocs } from 'firebase/firestore'
 import requests from '../../../utils/requests'
 import { collectionRef } from '../../../firebase/firebase'
 import { Missions } from './types/missions'
+import MissionDetails from './components/MissionDetails'
 
 const page = () => {
   const [selectedLv, setSelectedLv] = useState(1)
   const [missionData, setMissionData] = useState<Missions[]>([])
+
+  const [selectedMission, setSelectedMission] = useState<Missions | null>(null)
+  const [isModalOpen, setIsModalOpen] = useState(false)
 
   // ページ表示時にミッションデータをフェッチ
   useEffect(() => {
@@ -28,6 +32,13 @@ const page = () => {
     fetchMissions()
   }, [])
 
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+  const handleMissionActivate = () => {
+    setIsModalOpen(true)
+  }
+
   return (
     <>
       <main>
@@ -35,11 +46,15 @@ const page = () => {
           direction='column'
           className='w-full h-auto'>
           
-          {/* レベル別のタブ切り替え */}
-          <SelectLvTab levels={[1,2,3,4,5]} onSelect={setSelectedLv}/>
-
-          {/* 選択したレベルのリストを表示 */}
-          <MissionList selectedLv={selectedLv} missionData={missionData} />
+          {!selectedMission
+            ?<>
+              <SelectLvTab levels={[1,2,3,4,5]} onSelect={setSelectedLv}/>
+              <MissionList selectedLv={selectedLv} missionData={missionData} onSelectMission={setSelectedMission} />
+            </>
+          
+            // ミッションカードコンポーネントで任意のミッションが選ばれたときに表示
+            :<MissionDetails mission={selectedMission} Deactivate={() => setSelectedMission(null)} />
+          }
         </Flex>
       </main>
       <Footer />

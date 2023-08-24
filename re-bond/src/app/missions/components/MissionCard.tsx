@@ -4,20 +4,14 @@ import { Missions } from '../types/missions'
 
 type MissionProps = {
   mission: Missions
+  onSelectMission: () => void
 }
 
-const MissionCard = ({mission}:MissionProps) => {
-
-  const [activate, setActivate] = useState(false)
+const MissionCard = ({mission, onSelectMission }:MissionProps) => {
 
   const ActivateMission = () => {
-    if(!activate){
-      setActivate(true)
+      onSelectMission()
       console.log('MissionActivated')
-    }else{
-      setActivate(false)
-      console.log('MissionPaused')
-    }
   }
 
   return (

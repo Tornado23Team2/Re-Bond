@@ -8,9 +8,10 @@ import { Missions } from '../types/missions'
 type MissionListProps = {
   selectedLv:number
   missionData: Missions[]
+  onSelectMission: (mission: Missions) => void
 }
 
-const MissionList = ({ selectedLv, missionData }: MissionListProps) => {
+const MissionList = ({ selectedLv, missionData, onSelectMission }: MissionListProps) => {
   const [selectedMissions, setSelectedMissions] = useState<Missions[]>([])
 
   useEffect(() => {
@@ -35,9 +36,8 @@ const MissionList = ({ selectedLv, missionData }: MissionListProps) => {
       justify='center'
       direction='column'
       className='w-full mt-[1px] px-12 border-t-2 border-baseBlue'>
-        Missions for level.{selectedLv}
         {selectedMissions.map((mission) => (
-          <MissionCard key={mission.id} mission={mission} />
+          <MissionCard key={mission.id} mission={mission} onSelectMission={() => onSelectMission(mission)} />
         ))}
     </Flex>
   )
