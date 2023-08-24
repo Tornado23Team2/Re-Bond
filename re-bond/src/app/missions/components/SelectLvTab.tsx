@@ -2,13 +2,13 @@
 
 import { Flex } from '@/components/elements/box/Flex'
 import React, { useState } from 'react'
-import MissionList from './MissionList'
 
 type LvProps = {
   levels: number[]
+  onSelect: (level: number) => void
 }
 
-const SelectLvTab = ({levels}: LvProps) => {
+const SelectLvTab = ({levels, onSelect}: LvProps) => {
   const [activeLevel, setActiveLevel] = useState(levels[0])
 
   return (
@@ -19,8 +19,13 @@ const SelectLvTab = ({levels}: LvProps) => {
         direction='row'
         className='z-20 w-full h-[50px] bg-white'
       >
-        {levels.map((level, key) => (
-          <button onClick={() => setActiveLevel(level)}>
+        {levels.map((level) => (
+          <button
+            key={level}
+            onClick={()=>{
+              onSelect(level)
+              setActiveLevel(level)
+            }}>
             {activeLevel==level
             ?<Flex
               justify='center'
@@ -38,7 +43,6 @@ const SelectLvTab = ({levels}: LvProps) => {
           </button>
         ))}
       </Flex>
-      <MissionList level={activeLevel} />
     </>
   )
 }

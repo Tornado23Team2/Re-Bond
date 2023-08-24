@@ -1,7 +1,12 @@
 import { Flex } from '@/components/elements/box/Flex'
 import React, { useState } from 'react'
+import { Missions } from '../types/missions'
 
-const MissionCard = () => {
+type MissionProps = {
+  mission: Missions
+}
+
+const MissionCard = ({mission}:MissionProps) => {
 
   const [activate, setActivate] = useState(false)
 
@@ -22,7 +27,7 @@ const MissionCard = () => {
       direction='row'
       className='bg-gray-200 px-5 py-3 w-full mt-3'
     >
-      <h2>お題ほげほげほげ</h2>
+      <h2>{mission.name}</h2>
       
         <button
           onClick={ActivateMission}
