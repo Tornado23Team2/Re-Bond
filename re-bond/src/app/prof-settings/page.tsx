@@ -1,6 +1,6 @@
 import React from 'react'
 import { Flex } from '@/components/elements/box/Flex'
-import EditAvatar from './components/EditAvatar'
+import Authdemo from './components/Authdemo'
 import EditName from './components/EditName'
 import EditProfile from './components/EditProfile'
 import Footer from '@/components/layouts/footer/Footer'
@@ -17,7 +17,7 @@ const page = () => {
             SETTINGS
           </h1>
           {/* アイコン設定 */}
-          <EditAvatar />
+          <Authdemo />
 
           {/* 名前変更 */}
           <EditName />
