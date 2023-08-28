@@ -18,6 +18,7 @@ const Level = (props: Props) => {
   }
 
   const selectedLevel = selectByLevel[props.level]
+  
   return (
     <Flex
       align='center'
