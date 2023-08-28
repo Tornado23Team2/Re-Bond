@@ -1,6 +1,7 @@
 import { Flex } from '@/components/elements/box/Flex'
 import React, { useState } from 'react'
 import { Missions } from '../types/missions'
+import Title from './Title'
 
 type MissionProps = {
   mission: Missions
@@ -15,21 +16,19 @@ const MissionCard = ({mission, onSelectMission }:MissionProps) => {
   }
 
   return (
-    <Flex
-      align='center'
-      justify='space-between'
-      direction='row'
-      className='bg-gray-200 px-5 py-3 w-full mt-3'
-    >
-      <h2>{mission.name}</h2>
-      
-        <button
-          onClick={ActivateMission}
-          className='bg-baseBlue w-[70px] py-2 text-white'
+    <>
+      <button
+        onClick={ActivateMission}
+        className='bg-gray-200 px-5 py-3 w-full mt-3'>
+        <Flex
+          align='center'
+          justify='space-between'
+          direction='row'
         >
-          開始
-        </button>
-    </Flex>
+            <Title title={mission.name}/>
+        </Flex>
+      </button>
+    </>
   )
 }
 

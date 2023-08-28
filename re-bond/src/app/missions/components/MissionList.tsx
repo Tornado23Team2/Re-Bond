@@ -35,7 +35,7 @@ const MissionList = ({ selectedLv, missionData, onSelectMission }: MissionListPr
       align='center'
       justify='center'
       direction='column'
-      className='w-full mt-[1px] px-12 border-t-2 border-baseBlue'>
+      className='w-full px-12 border-t-2 border-baseBlue'>
         {selectedMissions.map((mission) => (
           <MissionCard key={mission.id} mission={mission} onSelectMission={() => onSelectMission(mission)} />
         ))}
