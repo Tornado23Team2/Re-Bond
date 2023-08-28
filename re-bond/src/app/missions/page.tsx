@@ -16,7 +16,6 @@ const page = () => {
   const [missionData, setMissionData] = useState<Missions[]>([])
 
   const [selectedMission, setSelectedMission] = useState<Missions | null>(null)
-  const [isModalOpen, setIsModalOpen] = useState(false)
 
   // ページ表示時にミッションデータをフェッチ
   useEffect(() => {
@@ -32,11 +31,9 @@ const page = () => {
     fetchMissions()
   }, [])
 
-  const closeModal = () => {
-    setIsModalOpen(false)
-  }
-  const handleMissionActivate = () => {
-    setIsModalOpen(true)
+  const closeDetail = () => {
+    setSelectedMission(null)
+    setSelectedLv(1)
   }
 
   return (
@@ -53,7 +50,7 @@ const page = () => {
             </>
           
             // ミッションカードコンポーネントで任意のミッションが選ばれたときに表示
-            :<MissionDetails mission={selectedMission} Deactivate={() => setSelectedMission(null)} />
+            :<MissionDetails mission={selectedMission} Deactivate={closeDetail} />
           }
         </Flex>
       </main>
