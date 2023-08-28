@@ -7,9 +7,22 @@ type LvProps = {
   levels: number[]
   onSelect: (level: number) => void
 }
+type LevelClasses = {
+  [key: number]: string
+}
 
 const SelectLvTab = ({levels, onSelect}: LvProps) => {
   const [activeLevel, setActiveLevel] = useState(levels[0])
+  
+  const selectByLevel:LevelClasses = {
+    1: 'bg-level1',
+    2: 'bg-level2',
+    3: 'bg-level3',
+    4: 'bg-level4',
+    5: 'bg-level5',
+  }
+
+  const selectedLevel = selectByLevel[activeLevel]
 
   return (
     <>
@@ -17,11 +30,12 @@ const SelectLvTab = ({levels, onSelect}: LvProps) => {
         justify='center'
         align='center'
         direction='row'
-        className='z-20 w-full h-[50px] bg-white'
+        className='z-20 mt-5 w-full bg-white'
       >
         {levels.map((level) => (
           <button
             key={level}
+            className='mx-2'
             onClick={()=>{
               onSelect(level)
               setActiveLevel(level)
@@ -30,13 +44,13 @@ const SelectLvTab = ({levels, onSelect}: LvProps) => {
             ?<Flex
               justify='center'
               align='center'
-              className='bg-baseBlue text-white px-5 py-3 mx-1'>
+              className={selectedLevel+' text-white w-[64px] h-[40px] rounded-t-xl'}>
               <h3>Lv.{level}</h3>
             </Flex>
             :<Flex
               justify='center'
               align='center'
-              className='bg-gray-100 px-5 py-3 mx-1'>
+              className='bg-gray-100 w-[64px] h-[40px] rounded-t-xl'>
               <h3>Lv.{level}</h3>
             </Flex>
             }
