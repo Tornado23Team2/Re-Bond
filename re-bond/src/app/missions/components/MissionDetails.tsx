@@ -34,14 +34,14 @@ const MissionDetails = ({mission, Deactivate, Success}: MissionProps) => {
         {/* ミッション達成 */}
         <button
           onClick={Success}
-          className='bg-baseBlue rounded-full text-white p-3 w-[90%] text-xl mb-5'
+          className='bg-baseBlue rounded-full text-white p-3 w-[90%] text-xl mb-5 active:bg-blue-800'
         >
           達成
         </button>
 
         <button
           onClick={Deactivate}
-          className='bg-baseBlue rounded-full text-white p-3 w-[90%] text-xl my-5'
+          className='bg-baseBlue rounded-full text-white p-3 w-[90%] text-xl my-5 active:bg-blue-800'
         >
           ミッションの変更
         </button>

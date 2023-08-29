@@ -45,7 +45,7 @@ const page = () => {
 
           <button
             onClick={pdfDownloadHandler}
-            className='bg-baseBlue rounded-full text-white p-3 w-[80%] text-xl my-5'>
+            className='bg-baseBlue rounded-full text-white p-3 w-[80%] text-xl my-5 active:bg-blue-800'>
             <Flex
               align='center'
               justify='center'
