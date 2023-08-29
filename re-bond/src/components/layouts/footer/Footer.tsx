@@ -56,7 +56,7 @@ const Footer = () => {
                 align='center'
                 justify='center'
                 direction='column'
-                className='w-[80px] h-[79px] bg-baseBlue'>
+                className='w-[77px] h-[79px] bg-baseBlue'>
                 <Image
                   src={'/footer/active' + button.icon_path}
                   width={36}
@@ -70,7 +70,7 @@ const Footer = () => {
               :<Flex
                 align='center'
                 justify='center'
-                className='w-[80px] h-[79px] bg-white active:bg-blue-100'>
+                className='w-[77px] h-[79px] bg-white active:bg-blue-100'>
                 <Image
                   src={'/footer' + button.icon_path}
                   width={38}

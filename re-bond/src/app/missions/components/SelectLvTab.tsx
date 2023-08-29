@@ -35,7 +35,7 @@ const SelectLvTab = ({levels, onSelect}: LvProps) => {
         {levels.map((level) => (
           <button
             key={level}
-            className='mx-2'
+            className='mx-[6px]'
             onClick={()=>{
               onSelect(level)
               setActiveLevel(level)
