@@ -34,6 +34,7 @@ const page = () => {
 
   const closeDetail = () => {
     setSelectedMission(null)
+    setIsSuccess(null)
     setSelectedLv(1)
   }
 
