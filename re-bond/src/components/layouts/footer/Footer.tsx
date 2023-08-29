@@ -58,7 +58,7 @@ const Footer = () => {
                 direction='column'
                 className='w-[80px] h-[79px] bg-baseBlue'>
                 <Image
-                  src={'/footer/active' + button.icon_path}
+                  src={'/Footer/active' + button.icon_path}
                   width={36}
                   height={36}
                   alt={button.sub}
@@ -72,7 +72,7 @@ const Footer = () => {
                 justify='center'
                 className='w-[80px] h-[79px] bg-white active:bg-blue-100'>
                 <Image
-                  src={'/footer' + button.icon_path}
+                  src={'/Footer' + button.icon_path}
                   width={38}
                   height={38}
                   alt={button.sub}
