@@ -11,7 +11,7 @@ const Header = () => {
         className='fixed z-30 w-full h-[90px] bg-[#fff] border-b-2 border-baseBlue'
       >
         <Image
-          src={'/Header/headerLogo.svg'}
+          src={'/header/headerLogo.svg'}
           width={130}
           height={53}
           alt='re:bond'
