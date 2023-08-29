@@ -9,6 +9,7 @@ import { getDocs } from 'firebase/firestore'
 import { collectionRef } from '../../../firebase/firebase'
 import { Missions } from './types/missions'
 import MissionDetails from './components/MissionDetails'
+import Header from '@/components/layouts/header/Header'
 
 const page = () => {
   const [selectedLv, setSelectedLv] = useState(1)
@@ -46,6 +47,7 @@ const page = () => {
 
   return (
     <>
+      <Header />
       <main>
         <Flex
           direction='column'

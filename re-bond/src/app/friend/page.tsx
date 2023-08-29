@@ -3,10 +3,12 @@ import Footer from '@/components/layouts/footer/Footer'
 import React from 'react'
 import InProgress from './components/InProgress'
 import FriendList from './components/FriendList'
+import Header from '@/components/layouts/header/Header'
 
 const page = () => {
   return (
     <>
+      <Header/>
       <main>
       <Flex
         direction='column'

@@ -7,6 +7,7 @@ import {BiSolidDownload} from 'react-icons/bi'
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
 import Qrpdf from './components/Qrpdf'
+import Header from '@/components/layouts/header/Header'
 
 const page = () => {
   const qrCodeValue = 'https://google.com' // QR コードに表示する値を設定
@@ -25,6 +26,7 @@ const page = () => {
 
   return (
     <>
+      <Header />
       <main className='w-full h-screen bg-gray-900 m-0'>
         <Flex
           direction='column'
