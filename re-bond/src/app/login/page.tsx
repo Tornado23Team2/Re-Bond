@@ -1,107 +1,135 @@
-import { Flex } from "@/components/elements/box/Flex";
-import login_button from "./components/login_button";
-//import { useForm, SubmitHandler } from "react-hook-form";
-// import { useNavigate } from "react-router-dom";
-//import { ErrorMessage } from '@hookform/error-message';
+import { signInAnonymously, signInWithPopup } from "firebase/auth";
+import Head from "next/head";
 import Image from "next/image";
-import React from "react";
+import { useEffect, useState } from "react";
+import { Flex } from "@/components/elements/box/Flex";
+import { useForm, SubmitHandler } from "react-hook-form";
+import auth from "../../../firebase/firebase";
 
-type Inputs = {
+interface Inputs {
   email: string;
   password: string;
-};
-//export default function Signin() {
-//const navigate = useNavigate();
-//errorMsg という名前のstate関数を宣言、初期値 null をセット
-//const [errorMsg, setErrorMsg] = useState("");
+}
 
-// const {
-//   register,
-//   handleSubmit,
-//   reset,
-//   formState: { errors },
-// } = useForm<Inputs>({
-//   mode: "onChange",
-// });
-//ログインボタンを押した際の処理
-// const onSubmit: SubmitHandler<Inputs> = (data) =>{
-//     console.log(data);
-//     if (data.username === "email" && data.password === "password"){  //仮email・パスワード
-//         loginSuccess();
-//     }else{
-//         loginErrorMsg();
-//     }
-//     reset();
-// };
-//ログインに成功した場合、次のページへ遷移
-// const loginSuccess = () => {
-//     navigate("/Top/page");
-// }
-//ログインに失敗した場合のエラーメッセージをセット
-//     const loginErrorMsg = () => {
-//         //setErrorMsg()でerrorMsgの値を更新
-//         setErrorMsg("ユーザーIDもしくはパスワードが間違っています。");
-
-// const clearForm = () => {
-//   reset();
-// };
 const page = () => {
-  return (
-    <>
-      <main>
-        <Flex align="center" direction="column" className="w-full h-auto py-5">
-          <Image
-            src={"/header/headerLogo.svg"}
-            width={258}
-            height={97}
-            alt="re:bond"
-            className="mt-4 m-8"
-          />
-          <br></br>
-          {/* メールアドレス*/}
-          <label htmlFor="email">
-            <input
-              type="text"
-              id="email"
-              placeholder="メールアドレス"
-              // {...register("e-mail", {
-              //   required: "メールアドレスを入力してください。",
-              //   maxLength: {
-              //     value: 20,
-              //     message: "20文字以内で入力してください",
-              //   },
-              // })}
-              className=" bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500   border-2 w-full "
-            />
-          </label>
-          <br />
-          <label htmlFor="">
-            <input
-              type="text"
-              id="password"
-              placeholder="パスワード"
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500   border-2 w-1/2"
-            />
-          </label>
+  // useEffect(() => {
+  //   const authStateChanged = auth.onAuthStateChanged((user) => {
+  //     setUser(user);
+  //   });
+  //   return () => {
+  //     authStateChanged();
+  //   };
+  // }, []);
 
-          <h3 className="text-right">パスワードを忘れた場合</h3>
+  // const [login, setLogin] = useState(false);
+  // const { signIn, signUp } = auth();
+
+  // const {
+  //   register,
+  //   handleSubmit,
+  //   formState: { errors },
+  // } = useForm<Inputs>();
+  // const onSubmit: SubmitHandler<Inputs> = async ({ email, password }) => {
+  //   if (login) {
+  //     await signIn(email, password);
+  //   } else {
+  //     await signUp(email, password);
+  //   }
+  // };
+
+  return (
+    <div
+      className="relative flex h-screen w-full flex-col bg-black
+      md:items-center md:justify-center md:bg-transparent"
+    >
+      <Head>
+        <title>login</title>
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Image
+        src={"/header/headerLogo.svg"}
+        width={258}
+        height={97}
+        alt="re:bond"
+        className="mt-4 m-8"
+      />
+      <form
+        // onSubmit={handleSubmit(onSubmit)}
+        className="relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6
+          md:mt-0 md:max-w-md md:px-14"
+      >
+        <h1>Sign In</h1>
+        <div className="space-y-4">
+          <label htmlFor="email" className="inline-block w-full">
+            <input
+              // {...register("email", { required: true })}
+              type="email"
+              placeholder="Email"
+              id="email"
+              className="input"
+            />
+            {/* エラーメッセージ */}
+            {/* {errors.email && (
+              <p className="p-1 text-[13px] font-light text-orange-500">
+                Please enter a valid email.
+              </p>
+            )} */}
+          </label>
+          <label htmlFor="password" className="inline-block w-full">
+            <input
+              // {...register("password", { required: true })}
+              type="password"
+              placeholder="PassWord"
+              id="password"
+              className="input"
+            />
+            {/* エラーメッセージ */}
+            {/* {errors.password && (
+              <p className="p-1 text-[13px] font-light text-orange-500">
+                Your password must contain between 4 and 60 characters.
+              </p>
+            )} */}
+          </label>
+        </div>
+
+        <button
+          type="submit"
+          className="w-full rounded bg-[#e50914] py-3 font-semibold"
+          // onClick={() => setLogin(true)}
+        >
+          ログイン
+        </button>
+
+        <div className="text-[gray]">
+          New to Netflix?{" "}
           <button
-            type="button"
-            className="bg-gray-300 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full w-1/2 m-4 items-center"
+            type="submit"
+            className="text-white hover:underline"
+            // onClick={() => setLogin(false)}
           >
-            ログイン
+            Sign up now!
           </button>
-          <br></br>
-          <button
-            type="button"
-            className="bg-gray-300 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full w-1/2 m-4"
-          >
-            新規登録
-          </button>
-        </Flex>
-      </main>
-    </>
+        </div>
+      </form>
+    </div>
   );
 };
+
+// export default login
+//             <input
+//               type="text"
+//               id="password"
+//               placeholder="パスワード"
+//               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 m-12 text-2xl border-2"
+//             />
+//           </label>
+//         </Flex>
+//         <Flex className="flex items-right">
+//           <h3>パスワードを忘れた場合</h3>
+//         </Flex>
+//       </main>
+//     </>
+//   );
+// };
 
 export default page;
