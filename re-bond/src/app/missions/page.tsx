@@ -16,6 +16,8 @@ const page = () => {
 
   const [selectedMission, setSelectedMission] = useState<Missions | null>(null)
 
+  const [isSuccess, setIsSuccess] = useState<Missions | null>(null)
+
   // ページ表示時にミッションデータをフェッチ
   useEffect(() => {
     const fetchMissions = async () => {
@@ -35,6 +37,12 @@ const page = () => {
     setSelectedLv(1)
   }
 
+  const MissionSuccess = () => {
+    setIsSuccess(selectedMission)
+    setSelectedMission(null)
+    setSelectedLv(1)
+  }
+
   return (
     <>
       <main>
@@ -45,11 +53,21 @@ const page = () => {
           {!selectedMission
             ?<>
               <SelectLvTab levels={[1,2,3,4,5]} onSelect={setSelectedLv}/>
+              {isSuccess &&
+              <Flex
+                align='center'
+                justify='center'
+                direction='column'
+                className='p-5'>
+                <h2 className='text-3xl mb-3'>Congratulations!</h2>
+                <p>次に取り組むミッションを選びましょう！</p>
+              </Flex>
+              }
               <MissionList selectedLv={selectedLv} missionData={missionData} onSelectMission={setSelectedMission} />
             </>
           
             // ミッションカードコンポーネントで任意のミッションが選ばれたときに表示
-            :<MissionDetails mission={selectedMission} Deactivate={closeDetail} />
+            :<MissionDetails mission={selectedMission} Deactivate={closeDetail} Success={MissionSuccess} />
           }
         </Flex>
       </main>

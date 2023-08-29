@@ -8,9 +8,10 @@ import Require from './Require'
 type MissionProps = {
   mission: Missions
   Deactivate: () => void
+  Success: () => void
 }
 
-const MissionDetails = ({mission, Deactivate}: MissionProps) => {
+const MissionDetails = ({mission, Deactivate, Success}: MissionProps) => {
   return (
     <div className='m-5'>
       <h3 className='mb-3'>選択中のミッション</h3>
@@ -32,7 +33,7 @@ const MissionDetails = ({mission, Deactivate}: MissionProps) => {
 
         {/* ミッション達成 */}
         <button
-          onClick={Deactivate}
+          onClick={Success}
           className='bg-baseBlue rounded-full text-white p-3 w-[90%] text-xl mb-5'
         >
           達成
