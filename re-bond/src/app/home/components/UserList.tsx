@@ -1,11 +1,9 @@
 import { Flex } from '@/components/elements/box/Flex'
-import Header from '@/components/layouts/header/Header'
 import React from 'react'
 
 const UserList = () => {
   return (
     <>
-      <Header/>
       <Flex
         align='center'
         direction='column'
