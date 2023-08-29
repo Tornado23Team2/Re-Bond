@@ -4,10 +4,12 @@ import EditAvatar from './components/EditAvatar'
 import EditName from './components/EditName'
 import EditProfile from './components/EditProfile'
 import Footer from '@/components/layouts/footer/Footer'
+import Header from '@/components/layouts/header/Header'
 
 const page = () => {
   return (
     <>
+      <Header />
       <main>
         <Flex
           align='center'
