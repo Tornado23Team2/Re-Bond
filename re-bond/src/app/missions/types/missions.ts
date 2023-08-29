@@ -1,8 +1,7 @@
 export interface Missions {
-  id: number
-  name: string
+  id: string
   level: number
-  require: boolean
+  name: string
   photo: string | undefined
-  inProgress: boolean
+  require: boolean
 }
