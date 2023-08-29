@@ -5,8 +5,8 @@
     "orientation": "any",
     "scope": "/",
     "start_url": "/",
-    "name": "re:bond",
-    "short_name": "re:bond",
+    "name": "Re:Bond",
+    "short_name": "Re:Bond",
     "description": "next-pwa-app",
     "icons": [
         {
