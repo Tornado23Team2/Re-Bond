@@ -1,12 +1,48 @@
 import React from 'react'
 import { Flex } from '@/components/elements/box/Flex'
 import EditAvatar from './components/EditAvatar'
-import EditName from './components/EditName'
 import EditProfile from './components/EditProfile'
 import Footer from '@/components/layouts/footer/Footer'
 import Header from '@/components/layouts/header/Header'
+import { Profiles } from './types/profiles'
 
-const page = () => {
+type Props = {
+}
+
+const page = (props: Props) => {
+  const PROFILES:Profiles[] = [
+    {
+      id: 0,
+      level: 0,
+      profile: null
+    },
+    {
+      id: 1,
+      level: 1,
+      profile: null
+    },
+    {
+      id: 2,
+      level: 2,
+      profile: null
+    },
+    {
+      id: 3,
+      level: 3,
+      profile: null
+    },
+    {
+      id: 4,
+      level: 4,
+      profile: null
+    },
+    {
+      id: 5,
+      level: 5,
+      profile: null
+    },
+  ]
+
   return (
     <>
       <Header />
@@ -15,16 +51,10 @@ const page = () => {
           align='center'
           direction='column'
           className='w-full h-auto py-5'>
-          <h1 className='font-bold text-2xl'>
-            SETTINGS
-          </h1>
-          {/* アイコン設定 */}
+          {/* プロフィールカードの設定 */}
           <EditAvatar />
 
-          {/* 名前変更 */}
-          <EditName />
-
-          {/* プロフィール設定1~5 */}
+          {/* プロフィール設定0~5 */}
           <EditProfile />
           <EditProfile />
           <EditProfile />
