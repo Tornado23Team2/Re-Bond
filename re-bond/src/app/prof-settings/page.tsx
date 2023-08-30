@@ -6,10 +6,7 @@ import Footer from '@/components/layouts/footer/Footer'
 import Header from '@/components/layouts/header/Header'
 import { Profiles } from './types/profiles'
 
-type Props = {
-}
-
-const page = (props: Props) => {
+const page = () => {
   const PROFILES:Profiles[] = [
     {
       id: 0,
@@ -50,17 +47,19 @@ const page = (props: Props) => {
         <Flex
           align='center'
           direction='column'
-          className='w-full h-auto py-5'>
-          {/* プロフィールカードの設定 */}
-          <EditAvatar />
+          className='w-full h-auto px-6'>
 
-          {/* プロフィール設定0~5 */}
-          <EditProfile />
-          <EditProfile />
-          <EditProfile />
-          <EditProfile />
-          <EditProfile />
-          
+          {/* プロフィール設定リスト */}
+          <Flex
+            align='flex-start'
+            justify='center'
+            direction='column'
+            className='w-full'>
+            <h2 className='mb-3'>プロフィールの設定</h2>
+            {PROFILES.map((profile, index) => (
+              <EditProfile profile={profile} key={index} />
+            ))}
+          </Flex>
           {/* メールアドレス変更 */}
 
           {/* パスワード変更 */}
