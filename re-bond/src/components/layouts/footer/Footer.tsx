@@ -71,7 +71,7 @@ const Footer = () => {
                   alt={button.sub}
                   className='mt-2'
                 />
-                <p className='text-white text-[0.75rem] pt-1'>{button.name}</p>
+                <p className='text-white text-[0.5rem] leading-[0.5rem] pt-1'>{button.name}</p>
               </Flex>
 
               :<Flex
