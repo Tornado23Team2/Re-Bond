@@ -6,10 +6,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
+type FooterClasses = {
+  name: string
+  sub: string
+  icon_path: string
+  path: string
+}
+
 const Footer = () => {
   const { IsActive } = useCustomRouter()
 
-  const BUTTON = [
+  const BUTTON:FooterClasses[] = [
     {
       name: 'ホーム',
       sub: 'Home',
