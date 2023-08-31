@@ -1,7 +1,5 @@
 import React from 'react'
 import { Flex } from '@/components/elements/box/Flex'
-import EditAvatar from './components/EditAvatar'
-import EditName from './components/EditName'
 import EditProfile from './components/EditProfile'
 import Footer from '@/components/layouts/footer/Footer'
 import Header from '@/components/layouts/header/Header'
@@ -18,11 +16,6 @@ const page = () => {
           <h1 className='font-bold text-2xl'>
             SETTINGS
           </h1>
-          {/* アイコン設定 */}
-          <EditAvatar />
-
-          {/* 名前変更 */}
-          <EditName />
 
           {/* プロフィール設定1~5 */}
           <EditProfile />
