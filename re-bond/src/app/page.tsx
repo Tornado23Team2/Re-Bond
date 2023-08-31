@@ -6,6 +6,7 @@ import Link from 'next/link'
 export default function Home() {
   return (
     <main className='p-0 m-0 '>
+    <Link href={"/home"}>
       <Flex 
         justify="center"
         align="center"
@@ -18,17 +19,9 @@ export default function Home() {
           alt="re:bond"
           className="mb-16"
         />
-         <Link
-            href={"/login"} 
-            className="w-1/2 bg-baseBlue text-white p-3 rounded-md text-center  active:bg-blue-800 mb-4">
-            ログイン  
-          </Link>
-         <Link
-            href={"/Registration"} 
-            className="w-1/2 bg-indigo-600 bg-baseBlue text-white p-3 rounded-md text-center active:bg-blue-800">
-            新規登録  
-          </Link>
+          <p>Tap to Start</p>
       </Flex>
+      </Link>
     </main>
   );
 }
