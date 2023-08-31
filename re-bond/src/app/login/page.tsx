@@ -1,135 +1,129 @@
-import { signInAnonymously, signInWithPopup } from "firebase/auth";
+"use client";
 import Head from "next/head";
 import Image from "next/image";
-import { useEffect, useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Flex } from "@/components/elements/box/Flex";
-import { useForm, SubmitHandler } from "react-hook-form";
-import auth from "../../../firebase/firebase";
-
-interface Inputs {
+import Link from "next/link";
+import { getAuth,signInWithEmailAndPassword,onAuthStateChanged,applyActionCode } from "firebase/auth";
+import { auth } from "../../../firebase/firebase";
+import app from "../../../firebase/firebase";
+import { Navigate } from "react-router-dom";
+type Users = {
   email: string;
   password: string;
 }
 
+
 const page = () => {
-  // useEffect(() => {
-  //   const authStateChanged = auth.onAuthStateChanged((user) => {
-  //     setUser(user);
-  //   });
-  //   return () => {
-  //     authStateChanged();
-  //   };
-  // }, []);
-
-  // const [login, setLogin] = useState(false);
-  // const { signIn, signUp } = auth();
-
-  // const {
-  //   register,
-  //   handleSubmit,
-  //   formState: { errors },
-  // } = useForm<Inputs>();
-  // const onSubmit: SubmitHandler<Inputs> = async ({ email, password }) => {
-  //   if (login) {
-  //     await signIn(email, password);
-  //   } else {
-  //     await signUp(email, password);
-  //   }
-  // };
-
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  
+  signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      console.log("ユーザーがログインしました: ", user);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error("エラーコード: ", errorCode);
+      console.error("エラーメッセージ: ", errorMessage);
+    });
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        // User is signed in, see docs for a list of available properties
+        // https://firebase.google.com/docs/reference/js/auth.user
+        const uid = user.uid;
+        // ...
+      } else {
+        // User is signed out
+        // ...
+      }
+    });
+    const handleChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setEmail(event.currentTarget.value);
+    };
+    const handleChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setPassword(event.currentTarget.value);
+    };
+    
   return (
-    <div
-      className="relative flex h-screen w-full flex-col bg-black
-      md:items-center md:justify-center md:bg-transparent"
-    >
-      <Head>
-        <title>login</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Image
-        src={"/header/headerLogo.svg"}
-        width={258}
-        height={97}
-        alt="re:bond"
-        className="mt-4 m-8"
-      />
-      <form
-        // onSubmit={handleSubmit(onSubmit)}
-        className="relative mt-24 space-y-8 rounded bg-black/75 py-10 px-6
-          md:mt-0 md:max-w-md md:px-14"
-      >
-        <h1>Sign In</h1>
-        <div className="space-y-4">
-          <label htmlFor="email" className="inline-block w-full">
-            <input
-              // {...register("email", { required: true })}
-              type="email"
-              placeholder="Email"
-              id="email"
-              className="input"
-            />
-            {/* エラーメッセージ */}
-            {/* {errors.email && (
-              <p className="p-1 text-[13px] font-light text-orange-500">
-                Please enter a valid email.
-              </p>
-            )} */}
-          </label>
-          <label htmlFor="password" className="inline-block w-full">
-            <input
-              // {...register("password", { required: true })}
-              type="password"
-              placeholder="PassWord"
-              id="password"
-              className="input"
-            />
-            {/* エラーメッセージ */}
-            {/* {errors.password && (
-              <p className="p-1 text-[13px] font-light text-orange-500">
-                Your password must contain between 4 and 60 characters.
-              </p>
-            )} */}
-          </label>
-        </div>
-
-        <button
-          type="submit"
-          className="w-full rounded bg-[#e50914] py-3 font-semibold"
-          // onClick={() => setLogin(true)}
+    <>
+    <main
+    className="p-0 m-0">
+      <Flex 
+        justify="center"
+        align="center"
+        direction="column" 
+        className="w-full h-screen">
+        <Head>
+          <title>login</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <Image
+          src={"/header/headerLogo.svg"}
+          width={258}
+          height={97}
+          alt="re:bond"
+          className="mb-24"
+        />
+        <form
+        className="w-4/5"
         >
-          ログイン
-        </button>
-
-        <div className="text-[gray]">
-          New to Netflix?{" "}
-          <button
-            type="submit"
-            className="text-white hover:underline"
-            // onClick={() => setLogin(false)}
-          >
-            Sign up now!
-          </button>
-        </div>
-      </form>
-    </div>
+          <Flex
+          align="center"
+          justify="center"
+          direction="column">
+          <input 
+            type="email"
+            id="email"
+            placeholder="メールアドレス"
+            className="bg-form p-3 w-full mb-4"
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              handleChangeEmail(event);
+            }
+          }
+            />
+            <input 
+            type="password"
+            id="password"
+            placeholder="パスワード"
+            className="bg-form p-3 w-full mb-4"
+            onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+              handleChangePassword(event);
+            }
+            }
+            />
+            <Link
+            className="w-full text-right mb-6"
+            href={"/Reregistration"}
+            >パスワードを忘れた場合
+            </Link>
+            <button 
+              className="w-full bg-baseBlue text-white p-3 rounded-full active:bg-blue-800 "
+            //  onClick={handleLogin}
+            >
+              ログイン  
+            </button>
+            <Flex
+              align="center"
+              justify="center"
+              className="w-full">
+            <span className="Border"/>
+            <p className="px-3 py-6 ">または</p>
+            <span className="Border"/>
+            </Flex>
+            <Link
+              href={"/Registration"} 
+              className="w-full bg-baseBlue text-white p-3 rounded-full text-center active:bg-blue-800">
+              新規登録  
+            </Link>
+          </Flex>
+        </form>
+      </Flex>
+    </main>
+    </>
   );
 };
-
-// export default login
-//             <input
-//               type="text"
-//               id="password"
-//               placeholder="パスワード"
-//               className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 m-12 text-2xl border-2"
-//             />
-//           </label>
-//         </Flex>
-//         <Flex className="flex items-right">
-//           <h3>パスワードを忘れた場合</h3>
-//         </Flex>
-//       </main>
-//     </>
-//   );
-// };
-
 export default page;
