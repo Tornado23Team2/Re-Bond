@@ -15,7 +15,7 @@ const EditProfile = ({profile}: Props) => {
         className='w-full'>
         <label
           htmlFor='profile'
-          className='w-[90%]'>
+          className='w-[95%] mb-4'>
           <p className='font-bold text-gray-500'>プロフィールLv.{profile.level}</p>
           <input
             type='field'
