@@ -6,10 +6,17 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
+type FooterClasses = {
+  name: string
+  sub: string
+  icon_path: string
+  path: string
+}
+
 const Footer = () => {
   const { IsActive } = useCustomRouter()
 
-  const BUTTON = [
+  const BUTTON:FooterClasses[] = [
     {
       name: 'ホーム',
       sub: 'Home',
@@ -64,7 +71,7 @@ const Footer = () => {
                   alt={button.sub}
                   className='mt-2'
                 />
-                <p className='text-white text-[0.75rem] pt-1'>{button.name}</p>
+                <p className='text-white text-[0.5rem] leading-[0.5rem] pt-1'>{button.name}</p>
               </Flex>
 
               :<Flex
