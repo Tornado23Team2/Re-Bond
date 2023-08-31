@@ -1,12 +1,22 @@
 import React from 'react'
 import { Flex } from '@/components/elements/box/Flex'
-import EditAvatar from './components/EditAvatar'
 import EditProfile from './components/EditProfile'
 import Footer from '@/components/layouts/footer/Footer'
 import Header from '@/components/layouts/header/Header'
 import { Profiles } from './types/profiles'
+import ProfileCard from './components/ProfileCard'
+import { Users } from '@/types/users'
 
 const page = () => {
+  const DUMMYUSER:Users = {
+    id: 0,
+    avatar: '/avatars/defaultAvatar.png',
+    name: 'ほげほげお',
+    theme: 'Violet',
+    email: 'hogehoge123@gmail.com',
+    password_hash: 'hogehogehoge',
+  }
+
   const PROFILES:Profiles[] = [
     {
       id: 0,
@@ -47,19 +57,23 @@ const page = () => {
         <Flex
           align='center'
           direction='column'
-          className='w-full h-auto px-6'>
+          className='w-full h-auto'>
+
+          {/* プロフィールカードの設定 */}
+          <ProfileCard user={DUMMYUSER}/>
 
           {/* プロフィール設定リスト */}
           <Flex
             align='flex-start'
             justify='center'
             direction='column'
-            className='w-full'>
+            className='w-full px-8'>
             <h2 className='mb-3'>プロフィールの設定</h2>
             {PROFILES.map((profile, index) => (
               <EditProfile profile={profile} key={index} />
             ))}
           </Flex>
+
           {/* メールアドレス変更 */}
 
           {/* パスワード変更 */}
