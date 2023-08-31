@@ -1,45 +1,74 @@
+"use client";
+import Head from "next/head";
 import { Flex } from "@/components/elements/box/Flex";
-//import { useForm, SubmitHandler } from "react-hook-form";
-// import { useNavigate } from "react-router-dom";
-//import { ErrorMessage } from '@hookform/error-message';
-import Image from "next/image";
-import React from "react";
-const page = () => {
+import Link from "next/link";
+import RadioButton from "./components/RadioButton";
+import  RegistraInput from "@/app/Registration/components/RegistInput"
+import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../../firebase/firebase";
+import { FirebaseError } from '@firebase/util'
+type Inputs = {
+  email: string;
+  password: string;
+}
+
+const page = ({email,password}:Inputs) => {
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in ユーザー情報格納
+      const user = userCredential.user;
+      console.log("ユーザーが作成されました: ", user);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.error("エラーコード: ", errorCode);
+      console.error("エラーメッセージ: ", errorMessage);
+      // ..
+    });
   return (
     <>
-      <main>
-        <Flex align="center" direction="column" className="w-full h-auto py-5">
-          <h1>新規登録</h1>
-          <br></br>
-          {/* メールアドレス*/}
-          <label htmlFor="email">
-            <input
-              type="text"
-              id="email"
-              placeholder="メールアドレス"
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500   border-2 w-1/2 "
-            />
-          </label>
-          <br />
-          <label htmlFor="">
-            <input
-              type="text"
-              id="password"
-              defaultValue={"パスワード"}
-              placeholder="パスワード"
-              className="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500   border-2 w-1/2"
-            />
-          </label>
-
-          <button
-            type="button"
-            className="bg-gray-300 hover:bg-blue-500 text-white font-bold py-2 px-4 rounded-full w-1/2 m-4 items-center"
-          >
-            次へ
-          </button>
-          <br></br>
-        </Flex>
-      </main>
+    <main
+    className="p-0 m-0">
+      <Flex 
+        justify="center"
+        align="center"
+        direction="column" 
+        className="w-full h-screen">
+        <Head>
+          <title>login</title>
+          <link rel="icon" href="/favicon.ico" />
+        </Head>
+        <p
+          className="text-4xl mb-8">
+          新規登録
+        </p>
+        <form
+        className="w-4/5">
+       <input 
+          type="name"
+          id="name"
+          placeholder="名前"
+          className="bg-form p-3 w-full mb-4"
+        />
+          <RegistraInput />
+          <Flex
+          align="center"
+          justify="center"
+          direction="column">
+            <button 
+              className="w-full bg-baseBlue text-white p-3 rounded-full mb-4">
+              次へ 
+            </button>
+            <Link
+              className="w-full text-center"
+              href={"/login"}
+              >ログインはこちら
+            </Link>
+          </Flex>
+        </form>
+      </Flex>
+    </main>
     </>
   );
 };

@@ -25,8 +25,18 @@ export default function Home() {
           </Link>
          <Link
             href={"/Registration"} 
-            className="w-1/2 bg-indigo-600 bg-baseBlue text-white p-3 rounded-md text-center active:bg-blue-800">
+            className="w-1/2 bg-indigo-600 bg-baseBlue text-white p-3 rounded-md text-center active:bg-blue-800 mb-4">
             新規登録  
+          </Link>
+          <Link
+            href={"/home"} 
+            className="w-1/2 bg-indigo-600 bg-baseBlue text-white p-3 rounded-md text-center active:bg-blue-800 mb-4">
+            ホーム
+          </Link>
+          <Link
+            href={"/missions"} 
+            className="w-1/2 bg-indigo-600 bg-baseBlue text-white p-3 rounded-md text-center active:bg-blue-800 ">
+            ミッション
           </Link>
       </Flex>
     </main>

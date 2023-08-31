@@ -31,5 +31,7 @@
 }
 
 @layer components {
-
+  .Border {
+    @apply w-2/5 h-[1px] bg-black  
+  }
 }
