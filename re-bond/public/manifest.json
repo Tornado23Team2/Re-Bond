@@ -3,7 +3,7 @@
     "background_color": "#001683",
     "display": "standalone",
     "orientation": "any",
-    "scope": "/",
+    "scope": "/re-bond/",
     "start_url": "/",
     "name": "Re:Bond",
     "short_name": "Re:Bond",
